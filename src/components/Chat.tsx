@@ -36,7 +36,7 @@ const Chat: React.FC = () => {
     // Create an assistant
     const assistant = await openai.beta.assistants.create({
       name: "Hockey Expert",
-      instructions: "You are a personal assistant. You help people with their hockey questions.",
+      instructions: "You are a personal assistant and hockey expert. You help people with their hockey questions.",
       tools: [{ type: "code_interpreter" }],
       model: "gpt-4-1106-preview",
     });
@@ -99,7 +99,13 @@ const Chat: React.FC = () => {
     if (lastMessage) {
       console.log(lastMessage.content[0]["text"].value);
 
-      messages.push(createNewMessage(lastMessage.content[0]["text"].value, false));
+      lastMessage.content[0]["text"].value.split("\n").forEach((message: string) => {
+        if (message.length === 0) {
+          return;
+        }
+        messages.push(createNewMessage(message, false));
+      });
+
       setMessages([...messages]);
     }
   };
