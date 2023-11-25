@@ -121,7 +121,7 @@ const Chat: React.FC = () => {
         {isWaiting && (
           <Grid item>
             <CircularProgress />
-            {isWaiting && <div>Waiting for response...</div>}
+            <div>Waiting for response...</div>
           </Grid>
         )}
         <Grid item>
