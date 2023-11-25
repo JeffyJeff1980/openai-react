@@ -110,6 +110,13 @@ const Chat: React.FC = () => {
     }
   };
 
+  // detect enter key and send message
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
+
   return (
     <Container>
       <Grid container direction="column" spacing={2}>
@@ -132,6 +139,7 @@ const Chat: React.FC = () => {
             fullWidth
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyPress}
           />
         </Grid>
         <Grid item>
