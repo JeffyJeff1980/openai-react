@@ -9,7 +9,7 @@ interface MessageProps {
 const Message: React.FC<MessageProps> = ({ message }) => {
   return (
     <div style={{ textAlign: message.isUser ? "right" : "left", margin: "8px" }}>
-      <div style={{ backgroundColor: message.isUser ? "#DCF8C6" : "#FFFFFF", padding: "8px", borderRadius: "8px" }}>
+      <div style={{ backgroundColor: message.isUser ? "#DCF8C6" : "#b8e3fc", padding: "8px", borderRadius: "8px" }}>
         {message.content}
       </div>
     </div>
