@@ -125,12 +125,6 @@ const Chat: React.FC = () => {
             <Message key={index} message={message} />
           ))}
         </Grid>
-        {isWaiting && (
-          <Grid item>
-            <CircularProgress />
-            <div>Waiting for response...</div>
-          </Grid>
-        )}
         <Grid item>
           <TextField
             label="Type your message"
@@ -144,7 +138,8 @@ const Chat: React.FC = () => {
         </Grid>
         <Grid item>
           <Button variant="contained" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
-            Send
+            {isWaiting && <CircularProgress size="1.5rem" color="inherit" />}
+            {!isWaiting && <>Send</>}
           </Button>
         </Grid>
       </Grid>
