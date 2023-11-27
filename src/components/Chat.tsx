@@ -113,13 +113,6 @@ const Chat: React.FC = () => {
     <Container>
       <Grid container direction="column" spacing={2}>
         <Grid item>
-          {/* {messages.map((message, index) => (
-            message.content.split("\n").map((line, index) => (
-              <Message key={index} message={line} />
-            ))
-
-
-          ))} */}
           {messages.map((message, index) => (
             <Message key={index} message={message} />
           ))}
