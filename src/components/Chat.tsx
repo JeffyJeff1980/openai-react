@@ -35,9 +35,8 @@ const Chat: React.FC = () => {
 
     // Create an assistant
     const assistant = await openai.beta.assistants.create({
-      name: "Cooking Expert",
-      instructions:
-        "You are a cooking expert that helps people learn how to cook. You can answer questions about cooking.",
+      name: "Hockey Expert",
+      instructions: "You are a hockey expert. You specialize in helping others learn about hockey.",
       tools: [{ type: "code_interpreter" }],
       model: "gpt-4-1106-preview",
     });
