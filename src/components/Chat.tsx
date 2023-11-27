@@ -35,8 +35,9 @@ const Chat: React.FC = () => {
 
     // Create an assistant
     const assistant = await openai.beta.assistants.create({
-      name: "Hockey Expert",
-      instructions: "You are a personal assistant and hockey expert. You help people with their hockey questions.",
+      name: "Cooking Expert",
+      instructions:
+        "You are a cooking expert that helps people learn how to cook. You can answer questions about cooking.",
       tools: [{ type: "code_interpreter" }],
       model: "gpt-4-1106-preview",
     });
@@ -55,10 +56,9 @@ const Chat: React.FC = () => {
     newMessage.isUser = isUser;
 
     return newMessage;
-  }
+  };
 
   const handleSendMessage = async () => {
-    
     messages.push(createNewMessage(input, true));
     setMessages([...messages]);
     setInput("");
@@ -98,15 +98,7 @@ const Chat: React.FC = () => {
     // Print the last message coming from the assistant
     if (lastMessage) {
       console.log(lastMessage.content[0]["text"].value);
-
-      lastMessage.content[0]["text"].value.split("\n").forEach((message: string) => {
-        if (message.length === 0) {
-          return;
-        }
-        messages.push(createNewMessage(message, false));
-      });
-
-      setMessages([...messages]);
+      setMessages([...messages, createNewMessage(lastMessage.content[0]["text"].value, false)]);
     }
   };
 
@@ -121,6 +113,13 @@ const Chat: React.FC = () => {
     <Container>
       <Grid container direction="column" spacing={2}>
         <Grid item>
+          {/* {messages.map((message, index) => (
+            message.content.split("\n").map((line, index) => (
+              <Message key={index} message={line} />
+            ))
+
+
+          ))} */}
           {messages.map((message, index) => (
             <Message key={index} message={message} />
           ))}
