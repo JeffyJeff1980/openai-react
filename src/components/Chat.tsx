@@ -110,7 +110,7 @@ const Chat: React.FC = () => {
 
   return (
     <Container>
-      <Grid container direction="column" spacing={2}>
+      <Grid container direction="column" spacing={2} paddingBottom={5}>
         {messages.map((message, index) => (
           <Grid item alignSelf={message.isUser ? "flex-end" : "flex-start"} key={index}>
             <Message key={index} message={message} />
