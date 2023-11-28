@@ -111,11 +111,11 @@ const Chat: React.FC = () => {
   return (
     <Container>
       <Grid container direction="column" spacing={2}>
-        <Grid item>
-          {messages.map((message, index) => (
+        {messages.map((message, index) => (
+          <Grid item alignSelf={message.isUser ? "flex-end" : "flex-start"} key={index}>
             <Message key={index} message={message} />
-          ))}
-        </Grid>
+          </Grid>
+        ))}
         <Grid item>
           <TextField
             label="Type your message"
