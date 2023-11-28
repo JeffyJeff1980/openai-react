@@ -1,6 +1,6 @@
 // src/components/Chat.tsx
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Container, Grid, CircularProgress } from "@mui/material";
+import { TextField, Button, Container, Grid, CircularProgress, LinearProgress } from "@mui/material";
 import Message from "./Message";
 import OpenAI from "openai";
 import { MessageDto } from "../models/Message";
@@ -25,7 +25,6 @@ const Chat: React.FC = () => {
       },
     ]);
   }, [assistant]);
-
 
   const initChatBot = async () => {
     const openai = new OpenAI({
@@ -126,13 +125,15 @@ const Chat: React.FC = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
           />
+          {isWaiting && <LinearProgress color="inherit" />}
         </Grid>
-        <Grid item>
-          <Button variant="contained" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
-            {isWaiting && <CircularProgress size="1.5rem" color="inherit" />}
-            {!isWaiting && <>Send</>}
-          </Button>
-        </Grid>
+        {!isWaiting && (
+          <Grid item>
+            <Button variant="contained" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
+              Send
+            </Button>
+          </Grid>
+        )}
       </Grid>
     </Container>
   );
