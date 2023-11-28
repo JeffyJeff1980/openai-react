@@ -18,7 +18,10 @@ const Message: React.FC<MessageProps> = ({ message }) => {
         }}
       >
         {message.content.split("\n").map((text, index) => (
-          <p key={index}>{text}</p>
+          <>
+            {text}
+            <br />
+          </>
         ))}
       </div>
     </div>
