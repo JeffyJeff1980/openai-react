@@ -1,6 +1,6 @@
 // src/components/Message.tsx
 import React from 'react';
-import { MessageDto } from '../models/Message';
+import { MessageDto } from "../models/MessageDto";
 
 interface MessageProps {
   message: MessageDto;

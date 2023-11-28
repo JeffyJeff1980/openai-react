@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { TextField, Button, Container, Grid, CircularProgress, LinearProgress } from "@mui/material";
 import Message from "./Message";
 import OpenAI from "openai";
-import { MessageDto } from "../models/Message";
+import { MessageDto } from "../models/MessageDto";
 
 const Chat: React.FC = () => {
   const [isWaiting, setIsWaiting] = useState<boolean>(false);
@@ -49,10 +49,7 @@ const Chat: React.FC = () => {
   };
 
   const createNewMessage = (content: string, isUser: boolean) => {
-    const newMessage = new MessageDto();
-    newMessage.content = content;
-    newMessage.isUser = isUser;
-
+    const newMessage = new MessageDto(isUser, content);
     return newMessage;
   };
 
@@ -90,7 +87,7 @@ const Chat: React.FC = () => {
 
     // Find the last message for the current run
     const lastMessage = messageList.data
-      .filter((message) => message.run_id === run.id && message.role === "assistant")
+      .filter((message: any) => message.run_id === run.id && message.role === "assistant")
       .pop();
 
     // Print the last message coming from the assistant
