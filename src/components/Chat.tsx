@@ -1,9 +1,10 @@
 // src/components/Chat.tsx
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Container, Grid, CircularProgress, LinearProgress } from "@mui/material";
+import { TextField, Button, Container, Grid, LinearProgress, CircularProgress } from "@mui/material";
 import Message from "./Message";
 import OpenAI from "openai";
 import { MessageDto } from "../models/MessageDto";
+import SendIcon from "@mui/icons-material/Send";
 
 const Chat: React.FC = () => {
   const [isWaiting, setIsWaiting] = useState<boolean>(false);
@@ -106,13 +107,15 @@ const Chat: React.FC = () => {
 
   return (
     <Container>
-      <Grid container direction="column" spacing={2} paddingBottom={5}>
+      <Grid container direction="column" spacing={2} paddingBottom={2}>
         {messages.map((message, index) => (
           <Grid item alignSelf={message.isUser ? "flex-end" : "flex-start"} key={index}>
             <Message key={index} message={message} />
           </Grid>
         ))}
-        <Grid item>
+      </Grid>
+      <Grid container direction="row" spacing={2} paddingBottom={5} justifyContent={"space-between"}>
+        <Grid item xs={11}>
           <TextField
             label="Type your message"
             variant="outlined"
@@ -124,13 +127,12 @@ const Chat: React.FC = () => {
           />
           {isWaiting && <LinearProgress color="inherit" />}
         </Grid>
-        {!isWaiting && (
-          <Grid item>
-            <Button variant="contained" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
-              Send
-            </Button>
-          </Grid>
-        )}
+        <Grid item xs={1}>
+          <Button variant="contained" size="large" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
+            {isWaiting && <CircularProgress color="inherit" />}
+            {!isWaiting && <SendIcon fontSize="large" />}
+          </Button>
+        </Grid>
       </Grid>
     </Container>
   );
