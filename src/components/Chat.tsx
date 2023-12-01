@@ -115,7 +115,7 @@ const Chat: React.FC = () => {
         ))}
       </Grid>
       <Grid container direction="row" paddingBottom={5} justifyContent={"space-between"}>
-        <Grid item md={8}>
+        <Grid item sm={11} xs={9}>
           <TextField
             label="Type your message"
             variant="outlined"
@@ -127,7 +127,7 @@ const Chat: React.FC = () => {
           />
           {isWaiting && <LinearProgress color="inherit" />}
         </Grid>
-        <Grid item md={2}>
+        <Grid item sm={1} xs={3}>
           <Button variant="contained" size="large" color="primary" onClick={handleSendMessage} disabled={isWaiting}>
             {isWaiting && <CircularProgress color="inherit" />}
             {!isWaiting && <SendIcon fontSize="large" />}
