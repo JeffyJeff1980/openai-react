@@ -30,7 +30,7 @@ const Chat: React.FC = () => {
   const initChatBot = async () => {
     const openai = new OpenAI({
       apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true,
+      dangerouslyAllowBrowser: false,
     });
 
     // Create an assistant
