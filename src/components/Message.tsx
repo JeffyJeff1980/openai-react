@@ -1,5 +1,5 @@
 // src/components/Message.tsx
-import React from 'react';
+import React, { Fragment } from "react";
 import { MessageDto } from "../models/MessageDto";
 
 interface MessageProps {
@@ -18,10 +18,10 @@ const Message: React.FC<MessageProps> = ({ message }) => {
         }}
       >
         {message.content.split("\n").map((text, index) => (
-          <>
+          <Fragment key={index}>
             {text}
             <br />
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
