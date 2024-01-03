@@ -1,5 +1,7 @@
 # A Step-By-Step Guide to creating your own assistant chatbot using OpenAI's Assistant API and React
 
+View the corresponding article here: https://medium.com/@JeffyJeff/a-step-by-step-guide-to-creating-your-own-assistant-chatbot-using-openais-assistant-api-and-react-655391215c3a
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
