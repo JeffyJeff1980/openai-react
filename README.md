@@ -43,7 +43,7 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    git clone https://github.com/JeffyJeff1980/openai-react.git
 
-## Available Scripts
+## Usage
 
 In the project directory, you can run:
 
